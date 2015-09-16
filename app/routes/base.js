@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     /**
      * Initialzes the base route.
      *
-     * @param domain the route domain for which to retireve the model data
+     * @param domain the route domain for which to retrieve the model data
      */
     init: function (domain) {
         this._super.apply(this, arguments);
