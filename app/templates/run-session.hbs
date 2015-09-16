@@ -1,0 +1,39 @@
+<!-- # result - start -->
+<div class="row">
+
+    <div class="col-md-12">
+
+        {{back-button}}
+
+        <section id="result">
+            <div class="box result clearfix">
+                <div class="col-md-3 run-session-id">
+                    {{#link-to "run-session" model.id}}
+                        <span class="id">{{model.id}}</span>
+                    {{/link-to}}
+                </div>
+                <div class="col-md-4">
+                    <div class="session-data">
+                        Sport: <span id="sport_id">{{model.sportTypeId}}</span><br/>
+                        Started:
+                        <time datetime="{{model.startTime}}">{{format-date model.startTime}}</time>
+                        <br/>
+                        Ended:
+                        <time datetime="{{model.endTime}}">{{format-date model.endTime}}</time>
+                        <br/>
+                        Duration: <span>{{format-duration model.duration}}</span><br/>
+                        Distance: <span>{{format-distance model.distance}}</span>
+                    </div>
+                </div>
+
+                <div class="map col-md-5" id="encoded_trace">
+                    {{#if model.encodedTrace}}
+                        {{google-map polyline=model.encodedTrace}}
+                    {{/if}}
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+<!-- # result - end -->

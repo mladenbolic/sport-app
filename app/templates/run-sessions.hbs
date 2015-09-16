@@ -1,0 +1,78 @@
+<!-- # api boxes - start -->
+<div class="row">
+
+    <div class="col-md-6">
+        <!-- # api box sortby- start -->
+        {{api-box title='Sort By' name='sortBy' items=sortItemMap groupValue=sortBy}}
+        <!-- # api box sortby - end -->
+    </div>
+
+    <div class="col-md-6">
+        <!-- # api box order - start -->
+        {{api-box title='Order' name='order' items=orderItemMap groupValue=order}}
+        <!-- # api box order - end -->
+    </div>
+
+</div>
+<!-- # api boxes - end -->
+
+<!-- # results - start -->
+<div class="row">
+
+    <div class="col-md-12">
+
+        <div id="results" class="results clearfix">
+
+            {{pagination-menu page=page totalPages=totalPages perPage=perPage}}
+
+            <header>
+                <div class="box title">
+                    Results
+                </div>
+            </header>
+
+            <section>
+
+                {{#each model as |runSession|}}
+                    <div class="box result clearfix">
+                        <div class="col-md-3 run-session-id">
+                            {{#link-to "run-session" runSession.id}}
+                                <span class="id">{{runSession.id}}</span>
+                            {{/link-to}}
+                        </div>
+                        <div class="col-md-4">
+                            <div class="session-data">
+                                Sport: <span id="sport_id">{{runSession.sportTypeId}}</span><br/>
+                                Started:
+                                <time datetime="{{runSession.startTime}}">{{format-date runSession.startTime}}</time>
+                                <br/>
+                                Ended:
+                                <time datetime="{{runSession.endTime}}">{{format-date runSession.endTime}}</time>
+                                <br/>
+                                Duration: <span>{{format-duration runSession.duration}}</span><br/>
+                                Distance: <span>{{format-distance runSession.distance}}</span>
+                            </div>
+                        </div>
+
+                        <div class="map col-md-5" id="encoded_trace">
+                            {{#if runSession.encodedTrace}}
+                                {{google-map polyline=runSession.encodedTrace}}
+                            {{/if}}
+                        </div>
+
+                    </div>
+                {{else}}
+                    <span>You were lazy :)</span>
+                {{/each}}
+
+            </section>
+
+            {{load-more page=page totalPages=totalPages perPage=perPage}}
+
+        </div>
+
+
+    </div>
+
+</div>
+<!-- # results - end -->

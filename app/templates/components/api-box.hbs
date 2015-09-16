@@ -1,0 +1,14 @@
+<div class="box api-box">
+    <header>
+        <div class="title">
+            {{title}}
+        </div>
+    </header>
+    <section id="sort-by">
+        <div class="content">
+            {{#each radioItems as |radioItem|}}
+                {{radio-button name=name value=radioItem.value groupValue=groupValue}} {{radioItem.name}}<br/>
+            {{/each}}
+        </div>
+    </section>
+</div>

@@ -1,0 +1,31 @@
+<div class="pagination">
+    {{#if isFirstPage}}
+        <span>&lt;</span>
+    {{else}}
+        {{#link-to (query-params page=prevPage)}}&lt;{{/link-to}}
+    {{/if}}
+
+    {{#if doShowLeftDots}}
+        {{#link-to (query-params page=1)}}1{{/link-to}}
+        <span class="page-numbers dots">…</span>
+    {{/if}}
+
+    {{#each pageItems as |pageItem|}}
+        {{#if pageItem.current}}
+            <span class="page-numbers current">{{pageItem.number}}</span>
+        {{else}}
+            {{#link-to (query-params page=pageItem.number) class=pageItem.nextToCurrent }}{{pageItem.number}}{{/link-to}}
+        {{/if}}
+    {{/each}}
+
+    {{#if doShowRightDots}}
+        <span class="page-numbers dots">…</span>
+        {{#link-to (query-params page=totalPages)}}{{totalPages}}{{/link-to}}
+    {{/if}}
+
+    {{#if isLastPage}}
+        <span>&gt;</span>
+    {{else}}
+        {{#link-to (query-params page=nextPage)}}&gt;{{/link-to}}
+    {{/if}}
+</div>
