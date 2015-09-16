@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 /**
- * Component for generation the route map.
+ * Component for generating the route map.
  */
 export default Ember.Component.extend({
 
