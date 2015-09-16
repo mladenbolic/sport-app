@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'my-app',
+    modulePrefix: 'sport-app',
     environment: environment,
     contentSecurityPolicy: {
       'default-src': "'none'",
